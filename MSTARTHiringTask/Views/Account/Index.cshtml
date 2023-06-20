@@ -1,0 +1,63 @@
+﻿@model Account
+
+<!-- Search form -->
+<form method="get">
+    <input type="text" name="search" placeholder="Search">
+    <button type="submit">Search</button>
+</form>
+
+<!-- Account grid -->
+<table>
+    <thead>
+        <tr>
+            <th>Account ID</th>
+            <th>User ID</th>
+            <th>Account Number</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var account in ViewBag.accounts)
+        {
+            <tr>
+                <td>@account.Id</td>
+                <td>@account.UserId</td>
+                <td>@account.AccountNumber</td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+<div class="container">
+    <form method="post">
+        <div class="form-group">
+            <label for="UserId">User ID:</label>
+            <input type="number" class="form-control" id="UserId" name="UserId" required value="@Model.User_ID">
+            <span asp-validation-for="User_ID"></span>
+        </div>
+        <div class="form-group">
+            <label for="AccountNumber">Account Number:</label>
+            <input type="text" class="form-control" id="AccountNumber" name="AccountNumber" required pattern="[0-9]{7}" value="@Model.Account_Number">
+            <span asp-validation-for="Account_Number"></span>
+        </div>
+        <div class="form-group">
+            <label for="Balance">Balance:</label>
+            <input type="number" class="form-control" id="Balance" name="Balance" required step="0.01" value="@Model.Balance">
+            <span asp-validation-for="Balance"></span>
+        </div>
+        @*<div class="form-group">
+            <label for="Currency">Currency:</label>
+            <select class="form-control" id="Currency" name="Currency" required>
+                <option value="">Select Currency</option>
+                <option value="USD" @(Mode.Currency == Currency.USD ? "selected" : "" )>USD</option>
+                <option value="EUR" @(Model.Currency= =Currency.EUR ? "selected" : "" )>EUR</option>
+                <option value="JD" @(Model.Currency= =Currency.JD ? "selected" : "" )>JD</option>
+            </select>
+            <span asp-validation-for="Currency"></span>
+        </div>*@
+        <div class="form-group">
+            <label for="Status">Status:</label>
+            <select class="form-control" id="Status" name="Status" required>
+                <option value="">Select</option>
+                </select>
+            </form>
+        </div>

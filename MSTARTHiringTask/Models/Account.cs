@@ -26,4 +26,18 @@ namespace MSTARTHiringTask.Models
         [Required]
         public int Status { get; set; }
     }
+
+    public struct Currency
+    {
+        public const string USD = "USD";
+        public const string EUR = "EUR";
+        public const string JD = "JD";
+    }
+
+    public enum AccountStatus
+    {
+        Active,
+        Inactive,
+        Deleted
+    }
 }
